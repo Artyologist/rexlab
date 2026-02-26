@@ -6,24 +6,25 @@ import BeatCard from '../../components/BeatCard';
 import axios from 'axios';
 import { FiSearch, FiFilter } from 'react-icons/fi';
 
+// Mock data for initial render if API fails or is empty
+// Prices set to ₹10 for test mode. Audio uses public CDN sample (no 404).
+const mockBeats = [
+  { _id: '1', title: 'Midnight Drive', price: 10, bpm: 140, duration: '3:20', genre: 'Trap', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', coverArtUrl: '/assets/audiowave.jpg' },
+  { _id: '2', title: 'Soulful Sundays', price: 10, bpm: 90, duration: '2:45', genre: 'Lo-Fi', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', coverArtUrl: '/assets/piano.jpg' },
+  { _id: '3', title: 'Hype Beast', price: 10, bpm: 160, duration: '3:10', genre: 'Drill', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', coverArtUrl: '/assets/interface.jpg' },
+];
+
 export default function BeatsPage() {
   const [beats, setBeats] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPlayingId, setCurrentPlayingId] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Mock data for initial render if API fails or is empty
-  // Prices set to ₹10 for test mode. Audio uses public CDN sample (no 404).
-  const mockBeats = [
-    { _id: '1', title: 'Midnight Drive', price: 10, bpm: 140, duration: '3:20', genre: 'Trap', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', coverArtUrl: '/assets/audiowave.jpg' },
-    { _id: '2', title: 'Soulful Sundays', price: 10, bpm: 90, duration: '2:45', genre: 'Lo-Fi', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', coverArtUrl: '/assets/piano.jpg' },
-    { _id: '3', title: 'Hype Beast', price: 10, bpm: 160, duration: '3:10', genre: 'Drill', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', coverArtUrl: '/assets/interface.jpg' },
-  ];
-
   useEffect(() => {
     const fetchBeats = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/beats');
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+        const { data } = await axios.get(`${apiUrl}/beats`);
         if (data.length > 0) {
           setBeats(data);
         } else {

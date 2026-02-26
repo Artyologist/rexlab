@@ -8,6 +8,6 @@
         }
     ],
     "env": {
-        "NEXT_PUBLIC_API_URL": "https://rexlabs-server.onrender.com/api"
+        "NEXT_PUBLIC_API_URL": "https://rexlab.onrender.com/api"
     }
 }

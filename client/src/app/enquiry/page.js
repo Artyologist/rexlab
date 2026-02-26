@@ -22,7 +22,8 @@ export default function EnquiryPage() {
     e.preventDefault();
     setStatus('sending');
     try {
-      await axios.post('http://localhost:5000/api/enquiries', formData);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+      await axios.post(`${apiUrl}/enquiries`, formData);
       setStatus('sent');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -42,7 +43,7 @@ export default function EnquiryPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in <span className="text-gradient">Touch</span></h1>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            Have a question? We're here to help you make your best music.
+            Have a question? We&apos;re here to help you make your best music.
           </p>
         </div>
       </div>
@@ -125,7 +126,7 @@ export default function EnquiryPage() {
 
               {status === 'sent' && (
                 <div className="p-3 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg text-sm text-center">
-                  Message sent successfully! We'll get back to you soon.
+                  Message sent successfully! We&apos;ll get back to you soon.
                 </div>
               )}
               {status === 'error' && (

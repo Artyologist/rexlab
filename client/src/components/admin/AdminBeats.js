@@ -18,7 +18,8 @@ export default function AdminBeats({ token }) {
 
   const fetchBeats = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/beats');
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+      const { data } = await axios.get(`${apiUrl}/beats`);
       setBeats(data);
       setLoading(false);
     } catch (error) {
@@ -35,7 +36,8 @@ export default function AdminBeats({ token }) {
   const handleDelete = async (id) => {
     if (confirm('Are you sure you want to delete this beat?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/beats/${id}`, config);
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+        await axios.delete(`${apiUrl}/beats/${id}`, config);
         setBeats(beats.filter(beat => beat._id !== id));
         toast.success('Beat deleted successfully');
       } catch (error) {
@@ -47,12 +49,13 @@ export default function AdminBeats({ token }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
       if (editingBeat) {
-        await axios.put(`http://localhost:5000/api/beats/${editingBeat._id}`, formData, config);
+        await axios.put(`${apiUrl}/beats/${editingBeat._id}`, formData, config);
         toast.success('Beat updated successfully');
         setEditingBeat(null);
       } else {
-        await axios.post('http://localhost:5000/api/beats', formData, config);
+        await axios.post(`${apiUrl}/beats`, formData, config);
         toast.success('New beat added successfully');
       }
       setFormData({ title: '', price: '', genre: '', duration: '', bpm: '', audioUrl: '', coverArtUrl: '' });

@@ -15,7 +15,8 @@ export default function AdminSessions({ token }) {
 
   const fetchSessions = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/sessions', config);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+      const { data } = await axios.get(`${apiUrl}/sessions`, config);
       setSessions(data);
       setLoading(false);
     } catch (error) {
@@ -31,7 +32,8 @@ export default function AdminSessions({ token }) {
 
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/sessions/${id}`, { status }, config);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+      await axios.put(`${apiUrl}/sessions/${id}`, { status }, config);
       toast.success(`Session marked as ${status}`);
       fetchSessions();
     } catch (error) {

@@ -14,7 +14,8 @@ export default function AdminEnquiries({ token }) {
 
   const fetchEnquiries = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/enquiries', config);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+      const { data } = await axios.get(`${apiUrl}/enquiries`, config);
       setEnquiries(data);
       setLoading(false);
     } catch (error) {
@@ -29,7 +30,8 @@ export default function AdminEnquiries({ token }) {
 
   const markAsRead = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/enquiries/${id}`, { status: 'read' }, config);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+      await axios.put(`${apiUrl}/enquiries/${id}`, { status: 'read' }, config);
       fetchEnquiries();
     } catch (error) {
       alert('Failed to update status');

@@ -49,7 +49,8 @@ export default function BookSessionPage() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      await axios.post('http://localhost:5000/api/sessions', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+      await axios.post(`${apiUrl}/sessions`, {
         clientName: formData.name,
         clientEmail: formData.email,
         clientPhone: formData.phone,
@@ -160,7 +161,7 @@ export default function BookSessionPage() {
               <div className="p-8 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 rounded-xl text-center border border-green-200 dark:border-green-800">
                 <FiCheck className="mx-auto text-4xl mb-4" />
                 <h3 className="text-xl font-bold mb-2">Booking Confirmed!</h3>
-                <p>We've sent a confirmation email to {formData.email}.</p>
+                <p>We&apos;ve sent a confirmation email to {formData.email}.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
