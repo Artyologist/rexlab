@@ -19,10 +19,10 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${outfit.variable} antialiased selection:bg-purple-500 selection:text-white`}>
         <Providers>{children}</Providers>
-        {/* <Script
+        <Script
           id="razorpay-checkout-js"
           src="https://checkout.razorpay.com/v1/checkout.js"
-        /> */}
+        />
       </body>
     </html>
   );

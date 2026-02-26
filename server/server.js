@@ -26,7 +26,7 @@ app.use('/api/users', require('./routes/authRoutes'));
 app.use('/api/beats', require('./routes/beatRoutes'));
 app.use('/api/sessions', require('./routes/sessionRoutes'));
 app.use('/api/enquiries', require('./routes/enquiryRoutes'));
-// app.use('/api/payment', require('./routes/paymentRoutes'));
+app.use('/api/payment', require('./routes/paymentRoutes'));
 
 app.get('/', (req, res) => {
   res.send('Rex Labs API is running...');
