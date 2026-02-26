@@ -30,6 +30,8 @@ const createOrder = async (req, res) => {
   }
 
   try {
+    console.log('Incoming Order Request:', { amount, totalItems: items?.length });
+    
     const options = {
       amount: Math.round(Number(amount) * 100), // paise
       currency: 'INR',
@@ -39,7 +41,7 @@ const createOrder = async (req, res) => {
     const razorpayOrder = await razorpay.orders.create(options);
 
     if (!razorpayOrder) {
-      return res.status(500).json({ message: 'Error creating Razorpay order' });
+      throw new Error('Razorpay order creation returned empty response');
     }
 
     // Save pending order to DB
@@ -50,7 +52,7 @@ const createOrder = async (req, res) => {
       status: 'pending',
     });
 
-    console.log(`✅ Razorpay order created: ${razorpayOrder.id} — ₹${amount}`);
+    console.log(`✅ Razorpay order created & saved: ${razorpayOrder.id}`);
 
     res.status(201).json({
       orderId: razorpayOrder.id,
@@ -59,8 +61,11 @@ const createOrder = async (req, res) => {
       key: process.env.RAZORPAY_KEY_ID,
     });
   } catch (error) {
-    console.error('createOrder error:', error.message);
-    res.status(500).json({ message: error.message || 'Internal Server Error' });
+    console.error('CRITICAL: createOrder error:', error);
+    res.status(500).json({ 
+      message: 'Payment Order Creation Failed',
+      error: error.message 
+    });
   }
 };
 

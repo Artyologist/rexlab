@@ -12,7 +12,7 @@ const orderSchema = mongoose.Schema(
         name: { type: String, required: true },
         price: { type: Number, required: true },
         itemType: { type: String, enum: ['Beat', 'Session'], required: true },
-        itemId: { type: mongoose.Schema.Types.ObjectId, required: true },
+        itemId: { type: String, required: true },
       },
     ],
     totalAmount: {
