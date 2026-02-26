@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rex Labs | Professional Music Production & Audio Engineering</title>
+  <meta name="description" content="Rex Labs is a professional music production and audio engineering studio specializing in beat production, vocal recording, mixing, and mastering. Based in Mumbai, India." />
+  <meta name="keywords" content="music production, audio engineering, beat production, mixing, mastering, vocal recording, Mumbai studio" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Rex Labs | Professional Music Production" />
+  <meta property="og:description" content="From Beat to Master — One Studio, One Vision." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-card: #161616;
+      --border: #222222;
+      --border-light: #2a2a2a;
+      --text-primary: #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --accent: #c8a96e;
+      --accent-light: rgba(200, 169, 110, 0.1);
+      --accent-border: rgba(200, 169, 110, 0.25);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #000 !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(200, 169, 110, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 20%, rgba(200, 169, 110, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      background: var(--accent-light);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      padding: 0.85rem 2.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .hero-divider {
+      margin-top: 5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-divider::before,
+    .hero-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-light);
+      max-width: 120px;
+    }
+
+    /* ── SECTION COMMON ── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-body {
+      font-size: 0.975rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--bg-primary);
+    }
+
+    .services-header {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .services-header .section-body {
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .service-item {
+      background: var(--bg-card);
+      padding: 2.25rem 2rem;
+      border-right: 1.5px solid var(--border);
+      border-bottom: 1.5px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .service-item:hover {
+      background: #1a1a1a;
+    }
+
+    .service-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .service-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .contact-row-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .contact-row-value {
+      font-size: 0.975rem;
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+
+    .contact-row-value a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-row-value a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-note {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: var(--accent-light);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+    }
+
+    .contact-note p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .contact-note strong {
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-divider::before,
+      .hero-divider::after { display: none; }
+
+      .footer-inner { justify-content: center; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .about-stats  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Rex<span>Labs</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <span class="hero-tag">Music Production Studio · Mumbai, India</span>
+    <h1 class="hero-title">
+      Professional Music Production<br />&amp; <em>Audio Engineering</em>
+    </h1>
+    <p class="hero-sub">
+      From Beat to Master — One Studio, One Vision.
+    </p>
+    <a href="#contact" class="btn-primary">Coming Soon</a>
+    <div class="hero-divider">Studio · Recording · Production</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">About the Studio</p>
+          <h2 class="section-title">Built Around Sound Excellence</h2>
+          <p class="section-body">
+            Rex Labs is a music production and audio engineering studio specializing in beat production, vocal recording, mixing, and mastering. Designed to deliver industry-grade sound quality for independent artists and creators, we combine technical precision with creative vision to produce music that stands out.
+          </p>
+          <p class="section-body" style="margin-top: 1rem;">
+            Whether you're tracking your first single or finalizing an album, Rex Labs provides the tools, expertise, and environment to realize your sound.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <p class="stat-number">10+</p>
+            <p class="stat-label">Years of Experience</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-number">200+</p>
+            <p class="stat-label">Projects Completed</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-number">50+</p>
+            <p class="stat-label">Artists Worked With</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-number">4</p>
+            <p class="stat-label">Core Services</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Studio Services</h2>
+        <p class="section-body">
+          A focused range of services crafted to take your music from idea to release-ready.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <p class="service-number">01</p>
+          <h3 class="service-name">Beat Production</h3>
+          <p class="service-desc">Custom instrumentals crafted to your genre, mood, and reference — ready for licensing or exclusivity.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-number">02</p>
+          <h3 class="service-name">Vocal Recording</h3>
+          <p class="service-desc">Professional vocal tracking with optimized microphone placement, signal chain, and live direction.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-number">03</p>
+          <h3 class="service-name">Mixing &amp; Mastering</h3>
+          <p class="service-desc">Balance, depth, and loudness — ensuring your track sounds polished across all playback systems.</p>
+        </div>
+        <div class="service-item">
+          <p class="service-number">04</p>
+          <h3 class="service-name">Sound Design</h3>
+          <p class="service-desc">Original sound design for film, advertising, and digital media — from ambient textures to hard-hitting effects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <p class="section-label">Get in Touch</p>
+          <h2 class="section-title">Start Your Project</h2>
+          <p class="section-body">
+            Reach out to discuss sessions, custom beat licensing, mixing projects, or general enquiries. We respond within 24 hours.
+          </p>
+          <div class="contact-note" style="margin-top: 1.75rem;">
+            <p>
+              <strong>Studio hours:</strong> Monday – Saturday, 10:00 AM – 8:00 PM IST.<br />
+              Custom project requests are welcome outside standard hours.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="contact-details">
+            <div class="contact-row">
+              <span class="contact-row-label">Email</span>
+              <span class="contact-row-value">
+                <a href="mailto:contact@rexlabs.com">contact@rexlabs.com</a>
+              </span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">Location</span>
+              <span class="contact-row-value">Mumbai, Maharashtra, India</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">Services Offered</span>
+              <span class="contact-row-value">Beat Production · Vocal Recording · Mixing · Mastering · Sound Design</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">Enquiries</span>
+              <span class="contact-row-value">
+                <a href="mailto:contact@rexlabs.com">Send us a message</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Rex<span>Labs</span></span>
+      <span class="footer-copy">© 2026 Rex Labs. All Rights Reserved.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

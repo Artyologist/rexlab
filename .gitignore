@@ -1,0 +1,32 @@
+# Root level gitignore
+
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment files - NEVER commit these
+.env
+server/.env
+client/.env
+client/.env.local
+*.env.local
+
+# Next.js build
+client/.next/
+client/out/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
+
+# Build artifacts
+/build
+/dist
