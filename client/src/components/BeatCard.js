@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FiPlay, FiPause, FiShoppingCart, FiCheckCircle, FiCopy } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-import { initializePayment } from '../utils/paymentHandler';
+// import { initializePayment } from '../utils/paymentHandler';
 
 const BeatCard = ({ beat, isPlaying, onPlay, onPause }) => {
   const audioRef = useRef(null);
@@ -33,6 +33,8 @@ const BeatCard = ({ beat, isPlaying, onPlay, onPause }) => {
   };
 
   const handleBuy = async () => {
+    alert('Payment integration is temporarily disabled during hosting setup. Please stay tuned!');
+    /*
     setPaying(true);
     try {
       const order = await initializePayment(
@@ -46,6 +48,7 @@ const BeatCard = ({ beat, isPlaying, onPlay, onPause }) => {
     } finally {
       setPaying(false);
     }
+    */
   };
 
   const copyToClipboard = (text) => {
